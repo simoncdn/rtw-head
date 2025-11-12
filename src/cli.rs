@@ -11,4 +11,8 @@ pub struct Cli {
     /// print the first NUM lines instead of the first 10; with the leading '-', print all but the last NUM lines of each file
     #[arg(short = 'n', long = "lines", default_value_t = 10)]
     pub lines_number: usize,
+
+    /// always print headers giving file names
+    #[arg(short = 'v', long = "verbose", default_value_t = false)]
+    pub is_verbose: bool,
 }
