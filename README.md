@@ -36,6 +36,7 @@ This implementation demonstrates important systems programming concepts:
 - ✅ Display first N lines of files (default: 10)
 - ✅ Support for multiple files with automatic headers
 - ✅ Verbose mode to force headers even for single files
+- ✅ Quiet mode to suppress all headers
 - ✅ Robust error handling for invalid paths and encodings
 
 ## Usage
@@ -58,6 +59,9 @@ cargo run -- file1.txt file2.txt file3.txt
 
 # Force header display even for single file
 cargo run -- -v example.txt
+
+# Suppress headers even for multiple files
+cargo run -- -q file1.txt file2.txt
 ```
 
 ### With cargo build
@@ -71,6 +75,7 @@ cargo build --release
 
 - `-n, --lines <NUM>`: Print the first NUM lines (default: 10)
 - `-v, --verbose`: Always print headers with file names
+- `-q, --quiet`: Never print headers with file names
 - `-h, --help`: Display help information
 - `-V, --version`: Display version information
 
@@ -94,6 +99,5 @@ This project explores:
 
 This implementation focuses on core functionality. Missing features:
 - `-c/--bytes`: Display first N bytes instead of lines
-- `-q/--quiet`: Never print headers
 - Negative values for `-n` (print all but last N lines)
 - stdin support

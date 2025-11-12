@@ -10,7 +10,7 @@ use std::{
 use cli::Cli;
 
 pub fn run(cli: Cli) -> Result<(), Box<dyn Error>> {
-    let should_print_names = cli.is_verbose || cli.files.len() > 1;
+    let should_print_names = (cli.is_verbose || cli.files.len() > 1) && !cli.is_quiet;
 
     for (i, file) in cli.files.iter().enumerate() {
         print_file(&file, should_print_names, cli.lines_number)?;

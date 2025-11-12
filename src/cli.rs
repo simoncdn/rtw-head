@@ -15,4 +15,13 @@ pub struct Cli {
     /// always print headers giving file names
     #[arg(short = 'v', long = "verbose", default_value_t = false)]
     pub is_verbose: bool,
+
+    /// never print headers giving file names
+    #[arg(
+        short = 'q',
+        long = "quiet",
+        visible_alias = "silent",
+        default_value_t = false
+    )]
+    pub is_quiet: bool,
 }
