@@ -10,18 +10,36 @@ use std::{
 use cli::Cli;
 
 pub fn run(cli: Cli) -> Result<(), Box<dyn Error>> {
-    let path = Path::new(&cli.file_path);
+    let should_print_names = cli.is_verbose || cli.files.len() > 1;
+
+    for (i, file) in cli.files.iter().enumerate() {
+        print_file(&file, should_print_names, cli.lines_number)?;
+
+        if i < cli.files.len() - 1 {
+            println!();
+        }
+    }
+
+    Ok(())
+}
+
+fn print_file(
+    file_path: &str,
+    with_file_name: bool,
+    lines_number: usize,
+) -> Result<(), Box<dyn Error>> {
+    let path = Path::new(&file_path);
     let file = fs::File::open(path)?;
 
     let reader = BufReader::new(&file);
     let stdout = io::stdout();
     let mut handle = stdout.lock();
 
-    if cli.is_verbose {
+    if with_file_name {
         print_file_name(path, &mut handle)?;
     }
 
-    for line in reader.lines().take(cli.lines_number) {
+    for line in reader.lines().take(lines_number) {
         let line = line?;
         writeln!(handle, "{}", line)?
     }

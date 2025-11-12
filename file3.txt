@@ -1,0 +1,13 @@
+Welcome to the third file!
+This one has a different structure.
+
+Configuration examples:
+PORT=3000
+DATABASE_URL=postgres://localhost/mydb
+API_KEY=secret_key_123
+
+List of tasks:
+[ ] Learn more Rust
+[ ] Build a CLI tool
+[x] Practice with head command
+[x] Understand BSD vs GNU differences

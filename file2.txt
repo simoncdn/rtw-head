@@ -1,0 +1,10 @@
+This is the second test file!
+It contains different content:
+- Programming languages: Rust, Go, TypeScript
+- Frameworks: Next.js, React, Tailwind
+- Tools: VS Code, Git, Docker
+
+Some code example:
+fn main() {
+    println!("Hello from Rust!");
+}
