@@ -34,6 +34,7 @@ This implementation demonstrates important systems programming concepts:
 ## Features
 
 - ✅ Display first N lines of files (default: 10)
+- ✅ Negative line counts (display all but last N lines)
 - ✅ Support for multiple files with automatic headers
 - ✅ Verbose mode to force headers even for single files
 - ✅ Quiet mode to suppress all headers
@@ -54,6 +55,9 @@ cargo run -- example.txt
 # Display first 5 lines
 cargo run -- -n 5 example.txt
 
+# Display all but the last 3 lines
+cargo run -- -n -3 example.txt
+
 # Process multiple files (headers shown automatically)
 cargo run -- file1.txt file2.txt file3.txt
 
@@ -73,7 +77,7 @@ cargo build --release
 
 ### Command-line options
 
-- `-n, --lines <NUM>`: Print the first NUM lines (default: 10)
+- `-n, --lines <NUM>`: Print the first NUM lines (default: 10). With a leading '-', print all but the last NUM lines
 - `-v, --verbose`: Always print headers with file names
 - `-q, --quiet`: Never print headers with file names
 - `-h, --help`: Display help information
@@ -99,5 +103,4 @@ This project explores:
 
 This implementation focuses on core functionality. Missing features:
 - `-c/--bytes`: Display first N bytes instead of lines
-- Negative values for `-n` (print all but last N lines)
-- stdin support
+- stdin support (reading from pipe)
